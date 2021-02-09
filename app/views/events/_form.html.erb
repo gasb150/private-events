@@ -7,6 +7,11 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+  <%= f.label :title, "Title" %>
+  <%= f.text_field :title %>
+  <%= f.label :description, "The event details" %>
+  <%= f.text_area :description %>
+  <%= f.button :submit %>
   </div>
-<% end %>
+<% end %> 
+

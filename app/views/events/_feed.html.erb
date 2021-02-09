@@ -1,0 +1,16 @@
+
+    <% @events.attendee.each do |event| %>
+    <%if user_signed_in? %>
+      <p>
+      
+       <%= event.attended_event %>
+      </p>
+      <% else %>
+      <p> This is demo until making user </p>
+      <% end %>
+      <tr>
+        <td><%= link_to 'Show', event %></td>
+        <td><%= link_to 'Edit', edit_event_path(event) %></td>
+        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
