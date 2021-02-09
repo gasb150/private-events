@@ -196,3 +196,1098 @@ Migrating to CreateAttendances (20210209191738)
   [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
   [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (9.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "gasb@150.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "gasb@150.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "gasb@150.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "gasb@150.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["email", "gasb@150.com"], ["created_at", "2021-02-09 19:53:58.082345"], ["updated_at", "2021-02-09 19:53:58.082345"]]
+  [1m[36mTRANSACTION (137.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddUserIdToEvents (20210209200031)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "events" ADD "user_id" integer[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210209200031"]]
+  [1m[36mTRANSACTION (64.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" ORDER BY "events"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" ORDER BY "events"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."user_id" = ? /* loading for inspect */ LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" ORDER BY "events"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."user_id" = ? /* loading for inspect */ LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+Started GET "/" for 127.0.0.1 at 2021-02-09 15:10:54 -0500
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:13
+  Rendered events/index.html.erb within layouts/application (Duration: 15.8ms | Allocations: 1111)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 212.9ms | Allocations: 6698)
+Completed 200 OK in 301ms (Views: 249.9ms | ActiveRecord: 1.1ms | Allocations: 11985)
+
+
+Started GET "/events/new" for 127.0.0.1 at 2021-02-09 15:10:57 -0500
+Processing by EventsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (Duration: 245.7ms | Allocations: 14651)
+  Rendered events/new.html.erb within layouts/application (Duration: 274.0ms | Allocations: 15613)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 292.3ms | Allocations: 18670)
+Completed 200 OK in 308ms (Views: 293.8ms | ActiveRecord: 1.1ms | Allocations: 23087)
+
+
+Started POST "/events" for 127.0.0.1 at 2021-02-09 15:10:58 -0500
+Processing by EventsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "commit"=>"Create Event"}
+  Rendering layout layouts/application.html.erb
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (Duration: 3.8ms | Allocations: 407)
+  Rendered events/new.html.erb within layouts/application (Duration: 5.5ms | Allocations: 515)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 30.9ms | Allocations: 3505)
+Completed 422 Unprocessable Entity in 80ms (Views: 33.3ms | ActiveRecord: 0.0ms | Allocations: 6190)
+
+
+Started GET "/events" for 127.0.0.1 at 2021-02-09 15:11:02 -0500
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:13
+  Rendered events/index.html.erb within layouts/application (Duration: 4.4ms | Allocations: 726)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.5ms | Allocations: 3782)
+Completed 200 OK in 15ms (Views: 13.2ms | ActiveRecord: 0.3ms | Allocations: 4191)
+
+
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Create (0.4ms)[0m  [1m[32mINSERT INTO "events" ("title", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["title", "blablabla"], ["created_at", "2021-02-09 20:12:02.420006"], ["updated_at", "2021-02-09 20:12:02.420006"], ["user_id", 1]]
+  [1m[36mTRANSACTION (81.6ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/events" for 127.0.0.1 at 2021-02-09 15:12:10 -0500
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:13
+  Rendered events/index.html.erb within layouts/application (Duration: 6.3ms | Allocations: 838)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 18.3ms | Allocations: 3885)
+Completed 200 OK in 21ms (Views: 19.2ms | ActiveRecord: 0.3ms | Allocations: 4290)
+
+
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:12:11 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 1.6ms | Allocations: 224)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.3ms | Allocations: 3852)
+Completed 200 OK in 28ms (Views: 13.6ms | ActiveRecord: 0.3ms | Allocations: 7013)
+
+
+Started GET "/events/1/edit" for 127.0.0.1 at 2021-02-09 15:12:14 -0500
+Processing by EventsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/edit.html.erb within layouts/application
+  Rendered events/_form.html.erb (Duration: 1.1ms | Allocations: 417)
+  Rendered events/edit.html.erb within layouts/application (Duration: 10.4ms | Allocations: 1174)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 19.0ms | Allocations: 4363)
+Completed 200 OK in 25ms (Views: 20.2ms | ActiveRecord: 0.1ms | Allocations: 5432)
+
+
+Started GET "/events" for 127.0.0.1 at 2021-02-09 15:12:17 -0500
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:13
+  Rendered events/index.html.erb within layouts/application (Duration: 5.7ms | Allocations: 814)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 14.8ms | Allocations: 3859)
+Completed 200 OK in 17ms (Views: 15.7ms | ActiveRecord: 0.4ms | Allocations: 4291)
+
+
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:12:19 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 98)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.3ms | Allocations: 3143)
+Completed 200 OK in 14ms (Views: 10.9ms | ActiveRecord: 0.2ms | Allocations: 4085)
+
+
+Started GET "/events" for 127.0.0.1 at 2021-02-09 15:12:20 -0500
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:13
+  Rendered events/index.html.erb within layouts/application (Duration: 4.3ms | Allocations: 811)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 13.8ms | Allocations: 3856)
+Completed 200 OK in 16ms (Views: 14.5ms | ActiveRecord: 0.2ms | Allocations: 4253)
+
+
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" ORDER BY "events"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Started GET "/events/1/edit" for 127.0.0.1 at 2021-02-09 15:13:19 -0500
+Processing by EventsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/edit.html.erb within layouts/application
+  Rendered events/_form.html.erb (Duration: 1.4ms | Allocations: 385)
+  Rendered events/edit.html.erb within layouts/application (Duration: 2.0ms | Allocations: 519)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.5ms | Allocations: 3573)
+Completed 200 OK in 19ms (Views: 13.3ms | ActiveRecord: 0.2ms | Allocations: 4513)
+
+
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:13:53 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 0.5ms | Allocations: 98)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 7.0ms | Allocations: 3143)
+Completed 200 OK in 11ms (Views: 7.7ms | ActiveRecord: 0.2ms | Allocations: 4084)
+
+
+Started GET "/events" for 127.0.0.1 at 2021-02-09 15:14:41 -0500
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:13
+  Rendered events/index.html.erb within layouts/application (Duration: 4.7ms | Allocations: 1030)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 24.6ms | Allocations: 4352)
+Completed 200 OK in 28ms (Views: 26.5ms | ActiveRecord: 0.1ms | Allocations: 5551)
+
+
+Started GET "/events" for 127.0.0.1 at 2021-02-09 15:14:56 -0500
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.8ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:13
+  Rendered events/index.html.erb within layouts/application (Duration: 13.7ms | Allocations: 1051)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 34.3ms | Allocations: 4370)
+Completed 200 OK in 46ms (Views: 41.2ms | ActiveRecord: 0.8ms | Allocations: 5570)
+
+
+Started GET "/events" for 127.0.0.1 at 2021-02-09 15:15:28 -0500
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.8ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:13
+  Rendered events/index.html.erb within layouts/application (Duration: 8.9ms | Allocations: 1045)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 26.9ms | Allocations: 4355)
+Completed 200 OK in 33ms (Views: 29.6ms | ActiveRecord: 0.8ms | Allocations: 5547)
+
+
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:15:30 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 50.0ms | Allocations: 7164)
+  Rendered layout layouts/application.html.erb (Duration: 50.8ms | Allocations: 7235)
+Completed 500 Internal Server Error in 57ms (ActiveRecord: 0.2ms | Allocations: 8299)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `event' for #<ActionView::Base:0x00000000009a88>
+Did you mean?  @event):
+    1: <p id="notice"><%= notice %></p>
+    2: <%= event.title %>
+    3: <%= event.description %>
+    4: <%= link_to 'Edit', edit_event_path(@event) %> |
+    5: <%= link_to 'Back', events_path %>
+  
+app/views/events/show.html.erb:2
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:16:08 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 1.8ms | Allocations: 246)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 13.7ms | Allocations: 3698)
+Completed 200 OK in 21ms (Views: 16.7ms | ActiveRecord: 0.2ms | Allocations: 5590)
+
+
+Started GET "/events/1/edit" for 127.0.0.1 at 2021-02-09 15:16:10 -0500
+Processing by EventsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/edit.html.erb within layouts/application
+  Rendered events/_form.html.erb (Duration: 3.1ms | Allocations: 613)
+  Rendered events/edit.html.erb within layouts/application (Duration: 5.1ms | Allocations: 995)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.0ms | Allocations: 4684)
+Completed 200 OK in 21ms (Views: 16.1ms | ActiveRecord: 0.2ms | Allocations: 5753)
+
+
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:16:29 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1668)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 1732)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.1ms | Allocations: 3444)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    1: <p id="notice"><%= notice %></p>
+    2: <% @events.each do |event| %>
+    3:     <p>
+    4:      <%= event.title %>
+    5:     </p>
+  
+app/views/events/show.html.erb:2
+Started GET "/events/new" for 127.0.0.1 at 2021-02-09 15:16:42 -0500
+Processing by EventsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (Duration: 2.5ms | Allocations: 532)
+  Rendered events/new.html.erb within layouts/application (Duration: 3.9ms | Allocations: 870)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.5ms | Allocations: 4201)
+Completed 200 OK in 15ms (Views: 13.3ms | ActiveRecord: 0.0ms | Allocations: 4738)
+
+
+Started GET "/events" for 127.0.0.1 at 2021-02-09 15:16:44 -0500
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:13
+  Rendered events/index.html.erb within layouts/application (Duration: 4.8ms | Allocations: 1076)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.5ms | Allocations: 4124)
+Completed 200 OK in 15ms (Views: 13.0ms | ActiveRecord: 0.2ms | Allocations: 4659)
+
+
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:16:46 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 1.3ms | Allocations: 1499)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 1563)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.1ms | Allocations: 2473)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    1: <p id="notice"><%= notice %></p>
+    2: <% @events.each do |event| %>
+    3:     <p>
+    4:      <%= event.title %>
+    5:     </p>
+  
+app/views/events/show.html.erb:2
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:17:21 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 9.5ms | Allocations: 4326)
+  Rendered layout layouts/application.html.erb (Duration: 9.8ms | Allocations: 4390)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.1ms | Allocations: 6102)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `event' for #<ActionView::Base:0x0000000000a938>
+Did you mean?  @event):
+    1: <p id="notice"><%= notice %></p>
+    2: 
+    3:       <p>
+    4:        <%= event.title %>
+    5:       </p>
+    6: <%= link_to 'Edit', edit_event_path(@event) %> |
+    7: <%= link_to 'Back', events_path %>
+  
+app/views/events/show.html.erb:4
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:17:26 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 3.6ms | Allocations: 237)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 24.1ms | Allocations: 3559)
+Completed 200 OK in 44ms (Views: 31.1ms | ActiveRecord: 0.6ms | Allocations: 5299)
+
+
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:17:56 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 2.6ms | Allocations: 249)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 24.0ms | Allocations: 3559)
+Completed 200 OK in 42ms (Views: 32.1ms | ActiveRecord: 0.3ms | Allocations: 5294)
+
+
+Started GET "/events" for 127.0.0.1 at 2021-02-09 15:17:58 -0500
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:13
+  Rendered events/index.html.erb within layouts/application (Duration: 10.5ms | Allocations: 1045)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 25.7ms | Allocations: 4093)
+Completed 200 OK in 30ms (Views: 27.1ms | ActiveRecord: 0.4ms | Allocations: 4619)
+
+
+Started GET "/events" for 127.0.0.1 at 2021-02-09 15:20:19 -0500
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:13
+  Rendered events/index.html.erb within layouts/application (Duration: 4.3ms | Allocations: 1045)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 13.1ms | Allocations: 4355)
+Completed 200 OK in 17ms (Views: 15.2ms | ActiveRecord: 0.2ms | Allocations: 5547)
+
+
+  [1m[36mAttendance Load (0.5ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/events" for 127.0.0.1 at 2021-02-09 15:20:58 -0500
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:13
+  Rendered events/index.html.erb within layouts/application (Duration: 5.3ms | Allocations: 1048)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 13.9ms | Allocations: 4370)
+Completed 200 OK in 18ms (Views: 15.8ms | ActiveRecord: 0.2ms | Allocations: 5569)
+
+
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAttendance Create (0.3ms)[0m  [1m[32mINSERT INTO "attendances" ("user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["event_id", 1], ["created_at", "2021-02-09 20:21:49.920509"], ["updated_at", "2021-02-09 20:21:49.920509"]]
+  [1m[36mTRANSACTION (99.5ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/events" for 127.0.0.1 at 2021-02-09 15:21:52 -0500
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:13
+  Rendered events/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 823)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.4ms | Allocations: 3869)
+Completed 200 OK in 14ms (Views: 13.0ms | ActiveRecord: 0.2ms | Allocations: 4265)
+
+
+Started GET "/events/new" for 127.0.0.1 at 2021-02-09 15:22:07 -0500
+Processing by EventsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (Duration: 3.0ms | Allocations: 532)
+  Rendered events/new.html.erb within layouts/application (Duration: 4.7ms | Allocations: 871)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.7ms | Allocations: 3926)
+Completed 200 OK in 16ms (Views: 13.9ms | ActiveRecord: 0.0ms | Allocations: 4477)
+
+
+Started GET "/events" for 127.0.0.1 at 2021-02-09 15:22:10 -0500
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:13
+  Rendered events/index.html.erb within layouts/application (Duration: 5.5ms | Allocations: 818)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.0ms | Allocations: 3863)
+Completed 200 OK in 14ms (Views: 11.8ms | ActiveRecord: 0.3ms | Allocations: 4262)
+
+
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:22:12 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1710)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 1774)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.2ms | Allocations: 2811)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4:       <p><%= @event.description %></p>
+    5: 
+    6:       <tr>
+    7:       <% @attendees.each do |attendance| %>
+    8:       
+    9:       <td><%= attendance %></td>
+   10:       </tr>
+  
+app/views/events/show.html.erb:7
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:22:36 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1705)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | Allocations: 1769)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.1ms | Allocations: 3481)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4:       <p><%= @event.description %></p>
+    5: 
+    6:       <tr>
+    7:       <% @attendances.each do |attendance| %>
+    8:       
+    9:       <td><%= attendance %></td>
+   10:       </tr>
+  
+app/views/events/show.html.erb:7
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:26:40 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1483)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 1635)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 1.5ms | Allocations: 8977)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4:       <p><%= @event.description %></p>
+    5: 
+    6:       <tr>
+    7:       <% @attendances.each do |attendance| %>
+    8:       
+    9:       <td><%= attendance %></td>
+   10:       </tr>
+  
+app/views/events/show.html.erb:7
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:27:00 -0500
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:27:00 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering events/show.html.erb within layouts/application
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 6.8ms | Allocations: 2159)
+  Rendered events/show.html.erb within layouts/application (Duration: 6.4ms | Allocations: 1481)
+  Rendered layout layouts/application.html.erb (Duration: 12.6ms | Allocations: 4257)
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | Allocations: 3622)
+Completed 500 Internal Server Error in 81ms (ActiveRecord: 3.6ms | Allocations: 16152)
+
+
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 1.0ms | Allocations: 6518)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4:       <p><%= @event.description %></p>
+    5: 
+    6:       <tr>
+    7:       <% @attendances.each do |attendance| %>
+    8:       
+    9:       <td><%= attendance %></td>
+   10:       </tr>
+  
+app/views/events/show.html.erb:7
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4:       <p><%= @event.description %></p>
+    5: 
+    6:       <tr>
+    7:       <% @attendances.each do |attendance| %>
+    8:       
+    9:       <td><%= attendance %></td>
+   10:       </tr>
+  
+app/views/events/show.html.erb:7
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:27:33 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1493)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 1557)
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 1.8ms | Allocations: 9154)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4:       <p><%= @event.description %></p>
+    5: 
+    6:       <tr>
+    7:       <% @attendances.each do |attendance| %>
+    8:       
+    9:       <td><%= attendance %></td>
+   10:       </tr>
+  
+app/views/events/show.html.erb:7
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:29:15 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1483)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | Allocations: 1548)
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 1.8ms | Allocations: 8728)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4:       <p><%= @event.description %></p>
+    5: 
+    6:       <tr>
+    7:       <% @attendances.each do |attendance| %>
+    8:       
+    9:       <td><%= attendance %></td>
+   10:       </tr>
+  
+app/views/events/show.html.erb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAttendance Create (0.3ms)[0m  [1m[32mINSERT INTO "attendances" ("user_id", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["event_id", 1], ["created_at", "2021-02-09 20:30:12.889384"], ["updated_at", "2021-02-09 20:30:12.889384"]]
+  [1m[36mTRANSACTION (62.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mAttendance Load (0.6ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:30:33 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1500)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | Allocations: 1564)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.1ms | Allocations: 2472)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4:       <p><%= @event.description %></p>
+    5: 
+    6:       <tr>
+    7:       <% @attendances.each do |attendance| %>
+    8:       
+    9:       <td><%= attendance %></td>
+   10:       </tr>
+  
+app/views/events/show.html.erb:7
+  [1m[36mAttendance Load (0.2ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" ORDER BY "attendances"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mAttendance Load (0.3ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" ORDER BY "attendances"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:32:31 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1702)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 1767)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.2ms | Allocations: 3500)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4:       <p><%= @event.description %></p>
+    5: 
+    6:       <tr>
+    7:       <% @attendances.each do |attendance| %>
+    8:       
+    9:       <td><%= attendance.user %></td>
+   10:       </tr>
+  
+app/views/events/show.html.erb:7
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:32:45 -0500
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.9ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 3.5ms | Allocations: 2118)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 2247)
+Completed 500 Internal Server Error in 52ms (ActiveRecord: 2.9ms | Allocations: 12518)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4:       <p><%= @event.description %></p>
+    5: 
+    6:       <tr>
+    7:       <% @attendances.each do |attendance| %>
+    8:       
+    9:       <td><%= attendance.user %></td>
+   10:       </tr>
+  
+app/views/events/show.html.erb:7
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:33:38 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1716)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 1781)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.2ms | Allocations: 3662)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4:       <p><%= @event.description %></p>
+    5: 
+    6:       <tr>
+    7:       <% @attendances.each do |attendance| %>
+    8:       
+    9:       <td><%= attendance.user %></td>
+   10:       </tr>
+  
+app/views/events/show.html.erb:7
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:33:54 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 8.2ms | Allocations: 3546)
+  Rendered layout layouts/application.html.erb (Duration: 8.6ms | Allocations: 3610)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.2ms | Allocations: 5323)
+
+
+  
+ActionView::Template::Error (undefined method `each' for #<Event:0x00007f5d5cb01768>):
+    4:       <p><%= @event.description %></p>
+    5: 
+    6:       <tr>
+    7:       <% @event.each do |attendance| %>
+    8:       
+    9:       <td><%= attendance.user %></td>
+   10:       </tr>
+  
+app/views/events/show.html.erb:7
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:34:08 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1702)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 1767)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.1ms | Allocations: 3500)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4:       <p><%= @event.description %></p>
+    5: 
+    6:       <tr>
+    7:       <% @events.each do |attendance| %>
+    8:       
+    9:       <td><%= attendance.user %></td>
+   10:       </tr>
+  
+app/views/events/show.html.erb:7
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:34:50 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1701)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 1765)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.1ms | Allocations: 3478)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4:       <p><%= @event.description %></p>
+    5: 
+    6:       <tr>
+    7:       <% @attendances.each do |attendance| %>
+    8:       
+    9:       <td><%= attendance.title %></td>
+   10:       </tr>
+  
+app/views/events/show.html.erb:7
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" ORDER BY "attendances"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:35:22 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 3.6ms | Allocations: 1701)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | Allocations: 1765)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.2ms | Allocations: 3478)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4:       <p><%= @event.description %></p>
+    5: 
+    6:       <tr>
+    7:       <% @attendances.each do |attendance| %>
+    8:       
+    9:       <td><%= attendance.user.email %></td>
+   10:       </tr>
+  
+app/views/events/show.html.erb:7
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events" ORDER BY "events"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:37:34 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.8ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 5.1ms | Allocations: 1627)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 1692)
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 0.8ms | Allocations: 3425)
+
+
+  
+ActionView::Template::Error (uninitialized constant #<Class:0x00007f5d4801b5d8>::Attendances):
+    4:       <p><%= @event.description %></p>
+    5: 
+    6:       <tr>
+    7:       <% Attendances.each do |attendance| %>
+    8:       
+    9:       <td><%= attendance.user.email %></td>
+   10:       </tr>
+  
+app/views/events/show.html.erb:7
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:37:41 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1701)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | Allocations: 1765)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.2ms | Allocations: 3478)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4:       <p><%= @event.description %></p>
+    5: 
+    6:       <tr>
+    7:       <% @attendances.each do |attendance| %>
+    8:       
+    9:       <td><%= attendance.user.email %></td>
+   10:       </tr>
+  
+app/views/events/show.html.erb:7
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:38:03 -0500
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 3.7ms | Allocations: 2118)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 2187)
+Completed 500 Internal Server Error in 44ms (ActiveRecord: 1.6ms | Allocations: 11774)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4:       <p><%= @event.description %></p>
+    5: 
+    6:       <tr>
+    7:       <% @attendances.each do |attendance| %>
+    8:       
+    9:       <td><%= attendance.user.email %></td>
+   10:       </tr>
+  
+app/views/events/show.html.erb:7
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:38:04 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1517)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 1582)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.1ms | Allocations: 2649)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4:       <p><%= @event.description %></p>
+    5: 
+    6:       <tr>
+    7:       <% @attendances.each do |attendance| %>
+    8:       
+    9:       <td><%= attendance.user.email %></td>
+   10:       </tr>
+  
+app/views/events/show.html.erb:7
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:38:05 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1501)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 1566)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.2ms | Allocations: 2492)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4:       <p><%= @event.description %></p>
+    5: 
+    6:       <tr>
+    7:       <% @attendances.each do |attendance| %>
+    8:       
+    9:       <td><%= attendance.user.email %></td>
+   10:       </tr>
+  
+app/views/events/show.html.erb:7
+Started GET "/events" for 127.0.0.1 at 2021-02-09 15:38:06 -0500
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:13
+  Rendered events/index.html.erb within layouts/application (Duration: 9.3ms | Allocations: 1202)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 441.3ms | Allocations: 21041)
+Completed 200 OK in 445ms (Views: 442.0ms | ActiveRecord: 0.5ms | Allocations: 21595)
+
+
+Started GET "/events/new" for 127.0.0.1 at 2021-02-09 15:38:07 -0500
+Processing by EventsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (Duration: 41.0ms | Allocations: 8565)
+  Rendered events/new.html.erb within layouts/application (Duration: 44.0ms | Allocations: 8988)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 53.4ms | Allocations: 12101)
+Completed 200 OK in 57ms (Views: 54.4ms | ActiveRecord: 0.0ms | Allocations: 12640)
+
+
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:38:11 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1502)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | Allocations: 1567)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.2ms | Allocations: 2495)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4:       <p><%= @event.description %></p>
+    5: 
+    6:       <tr>
+    7:       <% @attendances.each do |attendance| %>
+    8:       
+    9:       <td><%= attendance.user.email %></td>
+   10:       </tr>
+  
+app/views/events/show.html.erb:7
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:39:46 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 66.9ms | Allocations: 6098)
+  Rendered layout layouts/application.html.erb (Duration: 67.3ms | Allocations: 6162)
+Completed 500 Internal Server Error in 74ms (ActiveRecord: 0.2ms | Allocations: 7883)
+
+
+  
+ActionView::Template::Error (Could not find the source association(s) "attendee" or :attendee in model Attendance. Try 'has_many :attendee, :through => :attendances, :source => <name>'. Is it one of user or event?):
+    4:       <p><%= @event.description %></p>
+    5: 
+    6:       <tr>
+    7:       <% @event.attendee.each do |attendee| %>
+    8:       
+    9:       <td><%= attendance.user.email %></td>
+   10:       </tr>
+  
+app/views/events/show.html.erb:7
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:40:05 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1299)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | Allocations: 1363)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.2ms | Allocations: 3076)
+
+
+  
+ActionView::Template::Error (Could not find the source association(s) "attendee" or :attendee in model Attendance. Try 'has_many :attendee, :through => :attendances, :source => <name>'. Is it one of user or event?):
+    4:       <p><%= @event.description %></p>
+    5: 
+    6:       <tr>
+    7:       <% @event.attendee.each do |attendee| %>
+    8:       
+    9:       <td><%= attendee.email %></td>
+   10:       </tr>
+  
+app/views/events/show.html.erb:7
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:41:06 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 7.1ms | Allocations: 1953)
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | Allocations: 2125)
+Completed 500 Internal Server Error in 40ms (ActiveRecord: 3.0ms | Allocations: 9467)
+
+
+  
+ActionView::Template::Error (Could not find the source association(s) "User" in model Attendance. Try 'has_many :attendee, :through => :attendances, :source => <name>'. Is it one of user or event?):
+    4:       <p><%= @event.description %></p>
+    5: 
+    6:       <tr>
+    7:       <% @event.attendee.each do |attendee| %>
+    8:       
+    9:       <td><%= attendee.email %></td>
+   10:       </tr>
+  
+app/views/events/show.html.erb:7
+Started GET "/events/1" for 127.0.0.1 at 2021-02-09 15:41:45 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "attendances" ON "users"."id" = "attendances"."user_id" WHERE "attendances"."event_id" = ?[0m  [["event_id", 1]]
+  ↳ app/views/events/show.html.erb:7
+  Rendered events/show.html.erb within layouts/application (Duration: 40.2ms | Allocations: 9822)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 50.9ms | Allocations: 13181)
+Completed 200 OK in 83ms (Views: 50.2ms | ActiveRecord: 4.1ms | Allocations: 20484)
+
+
