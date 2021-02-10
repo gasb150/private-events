@@ -1,7 +1,5 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[ show edit update destroy ]
-  
-
 
   # GET /events or /events.json
   def index
@@ -10,6 +8,7 @@ class EventsController < ApplicationController
 
   # GET /events/1 or /events/1.json
   def show
+    
   end
 
   # GET /events/new

@@ -1,7 +1,6 @@
 <ul>
-<% @user.each do |user| %>
+
  <li>
- <%= link_to user.name, user_path(user) %>
+ <%= link_to current_user.name, current_user %>
 </li>
-<% end %>
 </ul>

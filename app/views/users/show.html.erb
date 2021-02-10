@@ -1,6 +1,5 @@
-<h1><%= @user.name %></h1>
+<h1><%= current_user.name %></h1>
 
-<%= @user.attendances.each do  |attendance|%>
-    <%= n = attendance.event_id %></br>
-    
+<% current_user.attended_events.each do  |attended|%>
+    <%= attended.title%></br>   
 <% end %></br>
