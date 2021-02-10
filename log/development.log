@@ -20807,3 +20807,66 @@ Started GET "/event2s/1" for 127.0.0.1 at 2021-02-10 11:47:32 -0500
   
 ActionController::RoutingError (No route matches [GET] "/event2s/1"):
   
+Started GET "/events" for ::1 at 2021-02-10 19:59:53 +0300
+  [1m[35m (9.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (6.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/events/_feed.html.erb:2
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/_feed.html.erb:6
+  Rendered events/_feed.html.erb (Duration: 128.3ms | Allocations: 10835)
+  Rendered events/index.html.erb within layouts/application (Duration: 131.7ms | Allocations: 11339)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 231.7ms | Allocations: 39723)
+Completed 200 OK in 290ms (Views: 237.1ms | ActiveRecord: 3.8ms | Allocations: 44533)
+
+
+Started GET "/events/new" for ::1 at 2021-02-10 19:59:56 +0300
+Processing by EventsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (Duration: 77.9ms | Allocations: 9014)
+  Rendered events/new.html.erb within layouts/application (Duration: 80.8ms | Allocations: 9355)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 97.6ms | Allocations: 12552)
+Completed 200 OK in 105ms (Views: 102.9ms | ActiveRecord: 0.0ms | Allocations: 13105)
+
+
+Started POST "/events" for ::1 at 2021-02-10 20:00:08 +0300
+Processing by EventsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "event"=>{"title"=>"test", "description"=>"test", "location"=>"tet", "date"=>"2021-02-11"}, "commit"=>"Create Event"}
+  Rendering layout layouts/application.html.erb
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (Duration: 3.9ms | Allocations: 755)
+  Rendered events/new.html.erb within layouts/application (Duration: 4.5ms | Allocations: 863)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 13.6ms | Allocations: 3963)
+Completed 422 Unprocessable Entity in 38ms (Views: 19.5ms | ActiveRecord: 0.0ms | Allocations: 6778)
+
+
+Started GET "/users/sign_in" for ::1 at 2021-02-10 20:00:17 +0300
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Redirected to http://[::1]:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 10ms (ActiveRecord: 0.2ms | Allocations: 1583)
+
+
+Started GET "/" for ::1 at 2021-02-10 20:00:17 +0300
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/events/_feed.html.erb:2
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/_feed.html.erb:6
+  Rendered events/_feed.html.erb (Duration: 12.0ms | Allocations: 1815)
+  Rendered events/index.html.erb within layouts/application (Duration: 12.9ms | Allocations: 1937)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 23.9ms | Allocations: 5103)
+Completed 200 OK in 28ms (Views: 25.0ms | ActiveRecord: 0.5ms | Allocations: 5510)
+
+
