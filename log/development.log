@@ -21511,3 +21511,534 @@ Processing by EventsController#show as HTML
 Completed 200 OK in 116ms (Views: 84.0ms | ActiveRecord: 1.4ms | Allocations: 5170)
 
 
+Started GET "/events/3" for ::1 at 2021-02-10 20:40:51 +0300
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/events_controller.rb:63:in `set_event'
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:63:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "attendances" ON "users"."id" = "attendances"."user_id" WHERE "attendances"."event_id" = ?[0m  [["event_id", 3]]
+  ↳ app/views/events/show.html.erb:8
+  Rendered events/show.html.erb within layouts/application (Duration: 22.1ms | Allocations: 7879)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 32.4ms | Allocations: 11213)
+Completed 200 OK in 66ms (Views: 36.3ms | ActiveRecord: 1.6ms | Allocations: 18614)
+
+
+Started GET "/attendances/new" for ::1 at 2021-02-10 20:40:53 +0300
+Processing by AttendancesController#new as HTML
+Completed 406 Not Acceptable in 93ms (ActiveRecord: 2.7ms | Allocations: 4206)
+
+
+  
+ActionController::MissingExactTemplate (AttendancesController#new is missing a template for request formats: text/html):
+  
+actionpack (6.1.1) lib/action_controller/metal/implicit_render.rb:45:in `default_render'
+actionpack (6.1.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+actionpack (6.1.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+actionpack (6.1.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (6.1.1) lib/abstract_controller/base.rb:228:in `process_action'
+actionpack (6.1.1) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (6.1.1) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (6.1.1) lib/active_support/callbacks.rb:117:in `block in run_callbacks'
+actiontext (6.1.1) lib/action_text/rendering.rb:20:in `with_renderer'
+actiontext (6.1.1) lib/action_text/engine.rb:55:in `block (4 levels) in <class:Engine>'
+activesupport (6.1.1) lib/active_support/callbacks.rb:126:in `instance_exec'
+activesupport (6.1.1) lib/active_support/callbacks.rb:126:in `block in run_callbacks'
+activesupport (6.1.1) lib/active_support/callbacks.rb:137:in `run_callbacks'
+actionpack (6.1.1) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.1.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.1.1) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (6.1.1) lib/active_support/notifications.rb:203:in `block in instrument'
+activesupport (6.1.1) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.1.1) lib/active_support/notifications.rb:203:in `instrument'
+actionpack (6.1.1) lib/action_controller/metal/instrumentation.rb:33:in `process_action'
+actionpack (6.1.1) lib/action_controller/metal/params_wrapper.rb:249:in `process_action'
+activerecord (6.1.1) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.1.1) lib/abstract_controller/base.rb:165:in `process'
+actionview (6.1.1) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.1.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.1.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.1.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.1.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.1.1) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (6.1.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.1.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.1.1) lib/action_dispatch/routing/route_set.rb:842:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (6.1.1) lib/action_dispatch/http/permissions_policy.rb:22:in `call'
+actionpack (6.1.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.1.1) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (6.1.1) lib/active_record/migration.rb:601:in `call'
+actionpack (6.1.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.1) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.1) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.1) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.1.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.1) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.1) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.1) lib/action_dispatch/middleware/host_authorization.rb:98:in `call'
+rack-mini-profiler (2.3.1) lib/mini_profiler/profiler.rb:373:in `call'
+webpacker (5.2.1) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.1.1) lib/rails/engine.rb:539:in `call'
+puma (5.2.1) lib/puma/configuration.rb:247:in `call'
+puma (5.2.1) lib/puma/request.rb:76:in `block in handle_request'
+puma (5.2.1) lib/puma/thread_pool.rb:337:in `with_force_shutdown'
+puma (5.2.1) lib/puma/request.rb:75:in `handle_request'
+puma (5.2.1) lib/puma/server.rb:431:in `process_client'
+puma (5.2.1) lib/puma/thread_pool.rb:145:in `block in spawn_thread'
+Started GET "/events/3" for ::1 at 2021-02-10 20:41:00 +0300
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:63:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (4.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "attendances" ON "users"."id" = "attendances"."user_id" WHERE "attendances"."event_id" = ?[0m  [["event_id", 3]]
+  ↳ app/views/events/show.html.erb:8
+  Rendered events/show.html.erb within layouts/application (Duration: 40.0ms | Allocations: 1094)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 103.8ms | Allocations: 4265)
+Completed 200 OK in 141ms (Views: 108.7ms | ActiveRecord: 5.6ms | Allocations: 5209)
+
+
+Started GET "/events/3" for ::1 at 2021-02-10 20:50:24 +0300
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/events_controller.rb:63:in `set_event'
+  [1m[36mEvent Load (1.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:63:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "attendances" ON "users"."id" = "attendances"."user_id" WHERE "attendances"."event_id" = ?[0m  [["event_id", 3]]
+  ↳ app/views/events/show.html.erb:8
+  Rendered events/show.html.erb within layouts/application (Duration: 64.8ms | Allocations: 2823)
+  Rendered layout layouts/application.html.erb (Duration: 69.7ms | Allocations: 2887)
+Completed 500 Internal Server Error in 158ms (ActiveRecord: 10.4ms | Allocations: 5224)
+
+
+  
+ActionView::Template::Error (undefined method `model_name' for nil:NilClass):
+     9:       
+    10:       <td><%= attendee.name %></td>
+    11: 
+    12:          <%= simple_form_for(@attendances) do |f| %>
+    13:             <%= hidden_field_tag :event_id, @event.id %>
+    14:             <%= f.button :submit%>
+    15:           <% end %>
+  
+app/views/events/show.html.erb:12
+app/views/events/show.html.erb:8
+Started GET "/events/3" for ::1 at 2021-02-10 20:50:59 +0300
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:63:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "attendances" ON "users"."id" = "attendances"."user_id" WHERE "attendances"."event_id" = ?[0m  [["event_id", 3]]
+  ↳ app/views/events/show.html.erb:8
+  Rendered events/show.html.erb within layouts/application (Duration: 10.2ms | Allocations: 2793)
+  Rendered layout layouts/application.html.erb (Duration: 10.8ms | Allocations: 2857)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.5ms | Allocations: 4578)
+
+
+  
+ActionView::Template::Error (undefined method `model_name' for nil:NilClass):
+     9:       
+    10:       <td><%= attendee.name %></td>
+    11: 
+    12:          <%= simple_form_for(@attendances) do |f| %>
+    13:             <%= hidden_field_tag :event_id, @event.id %>
+    14:             <%= f.button :submit%>
+    15:           <% end %>
+  
+app/views/events/show.html.erb:12
+app/views/events/show.html.erb:8
+Started GET "/events/3" for ::1 at 2021-02-10 20:51:39 +0300
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/events_controller.rb:63:in `set_event'
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:63:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "attendances" ON "users"."id" = "attendances"."user_id" WHERE "attendances"."event_id" = ?[0m  [["event_id", 3]]
+  ↳ app/views/events/show.html.erb:8
+  Rendered events/show.html.erb within layouts/application (Duration: 27.2ms | Allocations: 9661)
+  Rendered layout layouts/application.html.erb (Duration: 27.6ms | Allocations: 9725)
+Completed 500 Internal Server Error in 57ms (ActiveRecord: 3.5ms | Allocations: 16894)
+
+
+  
+ActionView::Template::Error (undefined method `model_name' for nil:NilClass):
+     9:       
+    10:       <td><%= attendee.name %></td>
+    11: 
+    12:          <%= simple_form_for(@attendances) do |f| %>
+    13:             <%= hidden_field_tag :event_id, @event.id %>
+    14:             <%= f.button :submit%>
+    15:           <% end %>
+  
+app/views/events/show.html.erb:12
+app/views/events/show.html.erb:8
+Started GET "/events/3" for ::1 at 2021-02-10 20:52:32 +0300
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/events_controller.rb:63:in `set_event'
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:63:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "attendances" ON "users"."id" = "attendances"."user_id" WHERE "attendances"."event_id" = ?[0m  [["event_id", 3]]
+  ↳ app/views/events/show.html.erb:8
+  Rendered events/show.html.erb within layouts/application (Duration: 31.9ms | Allocations: 9662)
+  Rendered layout layouts/application.html.erb (Duration: 32.9ms | Allocations: 9726)
+Completed 500 Internal Server Error in 63ms (ActiveRecord: 4.2ms | Allocations: 16895)
+
+
+  
+ActionView::Template::Error (undefined method `model_name' for nil:NilClass):
+     9:       
+    10:       <td><%= attendee.name %></td>
+    11: 
+    12:          <%= simple_form_for(@attendances) do |f| %>
+    13:             <%= hidden_field_tag :event_id, @event.id %>
+    14:             <%= f.button :submit%>
+    15:           <% end %>
+  
+app/views/events/show.html.erb:12
+app/views/events/show.html.erb:8
+Started GET "/events/3" for ::1 at 2021-02-10 20:53:04 +0300
+  [1m[35m (5.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:63:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "attendances" ON "users"."id" = "attendances"."user_id" WHERE "attendances"."event_id" = ?[0m  [["event_id", 3]]
+  ↳ app/views/events/show.html.erb:8
+  Rendered events/show.html.erb within layouts/application (Duration: 102.8ms | Allocations: 19100)
+  Rendered layout layouts/application.html.erb (Duration: 104.8ms | Allocations: 19169)
+Completed 500 Internal Server Error in 207ms (ActiveRecord: 6.8ms | Allocations: 28773)
+
+
+  
+ActionView::Template::Error (undefined method `model_name' for nil:NilClass):
+     9:       
+    10:       <td><%= attendee.name %></td>
+    11: 
+    12:          <%= simple_form_for(@attendances) do |f| %>
+    13:             <%= hidden_field_tag :event_id, @event.id %>
+    14:             <%= f.button :submit%>
+    15:           <% end %>
+  
+app/views/events/show.html.erb:12
+app/views/events/show.html.erb:8
+Started GET "/events/3" for ::1 at 2021-02-10 21:23:03 +0300
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/events_controller.rb:63:in `set_event'
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:63:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "attendances" ON "users"."id" = "attendances"."user_id" WHERE "attendances"."event_id" = ?[0m  [["event_id", 3]]
+  ↳ app/views/events/show.html.erb:8
+  Rendered events/show.html.erb within layouts/application (Duration: 9.0ms | Allocations: 2628)
+  Rendered layout layouts/application.html.erb (Duration: 9.6ms | Allocations: 2693)
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 2.4ms | Allocations: 4390)
+
+
+  
+ActionView::Template::Error (undefined method `model_name' for nil:NilClass):
+     9:       
+    10:       <td><%= attendee.name %></td>
+    11: 
+    12:          <%= simple_form_for(@attendances) do |f| %>
+    13:             <%= hidden_field_tag :event_id, @event.id %>
+    14:             <%= f.button :submit%>
+    15:           <% end %>
+  
+app/views/events/show.html.erb:12
+app/views/events/show.html.erb:8
+Started GET "/events/3" for ::1 at 2021-02-10 21:29:00 +0300
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/events_controller.rb:63:in `set_event'
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:63:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "attendances" ON "users"."id" = "attendances"."user_id" WHERE "attendances"."event_id" = ?[0m  [["event_id", 3]]
+  ↳ app/views/events/show.html.erb:8
+  Rendered events/show.html.erb within layouts/application (Duration: 6.2ms | Allocations: 1367)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 30.7ms | Allocations: 7600)
+Completed 200 OK in 44ms (Views: 34.8ms | ActiveRecord: 1.4ms | Allocations: 10003)
+
+
+Started GET "/attendances/new" for ::1 at 2021-02-10 21:29:05 +0300
+Processing by AttendancesController#new as HTML
+Completed 406 Not Acceptable in 19ms (ActiveRecord: 0.7ms | Allocations: 4280)
+
+
+  
+ActionController::MissingExactTemplate (AttendancesController#new is missing a template for request formats: text/html):
+  
+actionpack (6.1.1) lib/action_controller/metal/implicit_render.rb:45:in `default_render'
+actionpack (6.1.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+actionpack (6.1.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+actionpack (6.1.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (6.1.1) lib/abstract_controller/base.rb:228:in `process_action'
+actionpack (6.1.1) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (6.1.1) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (6.1.1) lib/active_support/callbacks.rb:117:in `block in run_callbacks'
+actiontext (6.1.1) lib/action_text/rendering.rb:20:in `with_renderer'
+actiontext (6.1.1) lib/action_text/engine.rb:55:in `block (4 levels) in <class:Engine>'
+activesupport (6.1.1) lib/active_support/callbacks.rb:126:in `instance_exec'
+activesupport (6.1.1) lib/active_support/callbacks.rb:126:in `block in run_callbacks'
+activesupport (6.1.1) lib/active_support/callbacks.rb:137:in `run_callbacks'
+actionpack (6.1.1) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.1.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.1.1) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (6.1.1) lib/active_support/notifications.rb:203:in `block in instrument'
+activesupport (6.1.1) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.1.1) lib/active_support/notifications.rb:203:in `instrument'
+actionpack (6.1.1) lib/action_controller/metal/instrumentation.rb:33:in `process_action'
+actionpack (6.1.1) lib/action_controller/metal/params_wrapper.rb:249:in `process_action'
+activerecord (6.1.1) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.1.1) lib/abstract_controller/base.rb:165:in `process'
+actionview (6.1.1) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.1.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.1.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.1.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.1.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.1.1) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (6.1.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.1.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.1.1) lib/action_dispatch/routing/route_set.rb:842:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (6.1.1) lib/action_dispatch/http/permissions_policy.rb:22:in `call'
+actionpack (6.1.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.1.1) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (6.1.1) lib/active_record/migration.rb:601:in `call'
+actionpack (6.1.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.1) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.1) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.1) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.1.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.1) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.1) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.1) lib/action_dispatch/middleware/host_authorization.rb:98:in `call'
+rack-mini-profiler (2.3.1) lib/mini_profiler/profiler.rb:373:in `call'
+webpacker (5.2.1) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.1.1) lib/rails/engine.rb:539:in `call'
+puma (5.2.1) lib/puma/configuration.rb:247:in `call'
+puma (5.2.1) lib/puma/request.rb:76:in `block in handle_request'
+puma (5.2.1) lib/puma/thread_pool.rb:337:in `with_force_shutdown'
+puma (5.2.1) lib/puma/request.rb:75:in `handle_request'
+puma (5.2.1) lib/puma/server.rb:431:in `process_client'
+puma (5.2.1) lib/puma/thread_pool.rb:145:in `block in spawn_thread'
+Started GET "/events/3" for ::1 at 2021-02-10 21:29:07 +0300
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:63:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "attendances" ON "users"."id" = "attendances"."user_id" WHERE "attendances"."event_id" = ?[0m  [["event_id", 3]]
+  ↳ app/views/events/show.html.erb:8
+  Rendered events/show.html.erb within layouts/application (Duration: 5.9ms | Allocations: 1096)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 16.4ms | Allocations: 4269)
+Completed 200 OK in 21ms (Views: 17.0ms | ActiveRecord: 0.4ms | Allocations: 5231)
+
+
+Started GET "/events/3" for ::1 at 2021-02-10 23:17:59 +0300
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/events_controller.rb:63:in `set_event'
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:63:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "attendances" ON "users"."id" = "attendances"."user_id" WHERE "attendances"."event_id" = ?[0m  [["event_id", 3]]
+  ↳ app/views/events/show.html.erb:8
+  Rendered events/show.html.erb within layouts/application (Duration: 26.4ms | Allocations: 7865)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 42.6ms | Allocations: 11205)
+Completed 200 OK in 75ms (Views: 45.7ms | ActiveRecord: 3.0ms | Allocations: 18703)
+
+
+Started GET "/events" for ::1 at 2021-02-10 23:18:01 +0300
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/events/_feed.html.erb:2
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/_feed.html.erb:6
+  Rendered events/_feed.html.erb (Duration: 21.2ms | Allocations: 2325)
+  Rendered events/index.html.erb within layouts/application (Duration: 23.2ms | Allocations: 2711)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 34.1ms | Allocations: 5885)
+Completed 200 OK in 38ms (Views: 34.8ms | ActiveRecord: 0.7ms | Allocations: 6416)
+
+
+Started GET "/events/1" for ::1 at 2021-02-10 23:18:03 +0300
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:63:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "attendances" ON "users"."id" = "attendances"."user_id" WHERE "attendances"."event_id" = ?[0m  [["event_id", 1]]
+  ↳ app/views/events/show.html.erb:8
+  Rendered events/show.html.erb within layouts/application (Duration: 7.3ms | Allocations: 1090)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 17.9ms | Allocations: 4245)
+Completed 200 OK in 22ms (Views: 18.6ms | ActiveRecord: 0.4ms | Allocations: 5190)
+
+
+Started GET "/events" for ::1 at 2021-02-10 23:18:04 +0300
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/events/_feed.html.erb:2
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/_feed.html.erb:6
+  Rendered events/_feed.html.erb (Duration: 12.8ms | Allocations: 1915)
+  Rendered events/index.html.erb within layouts/application (Duration: 13.7ms | Allocations: 2035)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 25.1ms | Allocations: 5190)
+Completed 200 OK in 28ms (Views: 25.4ms | ActiveRecord: 0.9ms | Allocations: 5591)
+
+
+Started GET "/users" for ::1 at 2021-02-10 23:18:12 +0300
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:4
+  Rendered users/index.html.erb within layouts/application (Duration: 6.5ms | Allocations: 1080)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 13.6ms | Allocations: 4248)
+Completed 200 OK in 18ms (Views: 15.6ms | ActiveRecord: 0.2ms | Allocations: 5220)
+
+
+Started GET "/users/2" for ::1 at 2021-02-10 23:18:14 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:1
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" INNER JOIN "attendances" ON "events"."id" = "attendances"."event_id" WHERE "attendances"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (Duration: 14.3ms | Allocations: 3384)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 25.3ms | Allocations: 6454)
+Completed 200 OK in 32ms (Views: 26.0ms | ActiveRecord: 1.0ms | Allocations: 7624)
+
+
+Started GET "/events" for ::1 at 2021-02-10 23:18:19 +0300
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/events/_feed.html.erb:2
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/_feed.html.erb:6
+  Rendered events/_feed.html.erb (Duration: 10.9ms | Allocations: 1922)
+  Rendered events/index.html.erb within layouts/application (Duration: 11.8ms | Allocations: 2044)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 20.2ms | Allocations: 5202)
+Completed 200 OK in 22ms (Views: 20.5ms | ActiveRecord: 0.4ms | Allocations: 5601)
+
+
+Started GET "/events/2" for ::1 at 2021-02-10 23:18:23 +0300
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:63:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "attendances" ON "users"."id" = "attendances"."user_id" WHERE "attendances"."event_id" = ?[0m  [["event_id", 2]]
+  ↳ app/views/events/show.html.erb:8
+  Rendered events/show.html.erb within layouts/application (Duration: 5.2ms | Allocations: 1082)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.9ms | Allocations: 4237)
+Completed 200 OK in 22ms (Views: 16.8ms | ActiveRecord: 0.5ms | Allocations: 5181)
+
+
