@@ -1,13 +1,34 @@
 
-    <% @events.attendee.each do |event| %>
+<%= current_user.name %> </br> 
+
+
+ <% @events.each do |event| %>
     <%if user_signed_in? %>
-      <p>
-      
-       <%= event.attended_event %>
-      </p>
-      <% else %>
-      <p> This is demo until making user </p>
+      <p>       
+       <% y = event.attendances.last %>
+       <% i = 0 %>
+       <% mmm = [] %>
+       <%  while i <= event.attendances.length do %>
+       <% y = event.attendances.find(i) if event.attendances.find_by(id: i) != nil %> </br>
+       <%= event.attendances.last.event_id %> </br>
+       <% attendee_id = event.attendee.ids%>
+       <%= attendee_id.length %>
+           <% attendee_id.each do |id| %>
+              <% if id == y.user.id %>
+              <%= mmm << event.title %> </br>
+              <% end %>
+           <% end %>
+      <% i+=1 %>
       <% end %>
+      <%= mmm %>
+      </p>
+    <% else %>
+      <p> This is demo until making user </p>
+    <% end %>
+ <% end %>
+
+  <% @events.each do |event| %>
+
       <tr>
         <td><%= link_to 'Show', event %></td>
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
