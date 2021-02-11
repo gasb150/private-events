@@ -2,6 +2,7 @@
 
       <p><%= @event.title %></p>
       <p><%= @event.description %></p>
+      <p><%= @event.date %></p>
       <tr>
       <% @event.attendee.each do |attendee| %>
       <td><%= attendee.name %></td>
