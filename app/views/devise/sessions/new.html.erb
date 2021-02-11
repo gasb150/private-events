@@ -1,5 +1,5 @@
-<h2>Log in</h2>
-
+<h2 class="d-flex justify-content-center m-4">Log in</h2>
+<div class="d-flex justify-content-center m-4 border border-dark p-2 bg-light">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
@@ -19,8 +19,10 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Log in", class: "mt-2 btn btn-success" %>
   </div>
 <% end %>
-
+</div>
+<div class="d-flex justify-content-center m-4 p-2">
 <%= render "devise/shared/links" %>
+</div>

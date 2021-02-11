@@ -11,6 +11,29 @@
   </head>
 
   <body>
+  <nav class="navbar navbar-expand bg-warning d-flex justify-content-around">
+       <%= link_to "EVENT APPLICATION", events_path , class: "navbar-brand"%>
+ <ul class="navbar-nav ">
+  <% if user_signed_in? %>
+        <li class="nav-item m-1">
+          <%= link_to "CREATE EVENT", new_event_path, class: "btn btn-primary"%>
+        </li>
+        <li class="nav-item m-1">
+          <%= link_to "MY EVENTS", current_user, class: "btn btn-primary"%>
+        </li>
+        <li class="nav-item m-1">
+           <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-danger"%>
+        </li>
+        <% else %>
+            <li class="nav-item m-1">
+              <%= link_to 'Sign In', new_user_session_path, class: "btn btn-info"%>
+            </li>
+            <li class="nav-item m-1">
+               <%= link_to 'Sign Up', new_user_registration_path, class: "btn btn-info"%>
+            </li>
+  <% end %>
+  </ul>  
+</nav>
 
  <% if flash[:notice] %>
       <p class="notice"><%= notice %></p>
@@ -19,6 +42,10 @@
   <% if flash[:alert] %>
   <p class="alert"><%= alert %></p>
   <% end %>
-    <%= yield %>
+
+
+  <%= yield %>
+
+  
   </body>
 </html>

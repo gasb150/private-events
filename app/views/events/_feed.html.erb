@@ -1,16 +1,34 @@
 
-<%= current_user.name %> </br> 
 
 
- 
+<% if user_signed_in? %>
+<h1 class="text-center my-4"> Welcome <%= current_user.name %> ! </h1></br> 
+<% else %> 
+<h1 class="text-center my-4"> Welcome To Our Event Application </h1>
+<% end %>
+  <table class="table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Event Number</th>
+      <th scope="col">Event Title</th>
+      <th scope="col">Event Details</th>
+      <th scope="col">Event Date</th>
+    </tr>
+  </thead>
+<tbody>
+   
   <% @events.each do |event| %>
-  
-      <tr>
-           <td><%= event.title %></td>
-        <td><%= link_to 'Show', event %></td>
-        <% if current_user.id == event.user_id %>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
+   <tr class="text-center">
+      <th scope="row"><%= event.id %></th>
+      <td class="table-success text-center"><%= event.title %></td>
+      <td class="text-center"><%= link_to 'Show', event %></td>
+       <td class="text-center"><%= event.date %></td>
+       <% if user_signed_in?  && current_user.id == event.user_id %>
+        <td class="table-warning text-center"><%= link_to 'Edit', edit_event_path(event) %></td>
+        <td class="table-warning text-center"><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+   </tr>
+
+   
     <% end %>
+

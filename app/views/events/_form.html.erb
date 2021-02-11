@@ -6,7 +6,7 @@
   <div class="form-inputs">
   </div>
 
-  <div class="form-actions">
+  <div class="form-actions d-flex flex-column w-50 m-auto">
  <%= f.label :title, "Title" %>
   <%= f.text_field :title %>
   <%= f.label :description, "The event details" %>
@@ -15,7 +15,7 @@
   <%= f.text_field :location %>
    <%= f.label :date, "The date of the event" %>
   <%= f.date_field :date %>
-  <%= f.button :submit %>
+  <%= f.button :submit , class: "btn btn-primary my-2" %>
   </div>
 <% end %> 
 

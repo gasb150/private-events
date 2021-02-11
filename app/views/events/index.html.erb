@@ -1,7 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Events</h1>
-
 <table>
   <thead>
     <tr>
@@ -15,5 +13,8 @@
 </table>
 
 <br>
-
-<%= link_to 'New Event', new_event_path %>
+<% if user_signed_in? %>
+<div class="text-center">
+<%= link_to 'New Event', new_event_path, class: "btn btn-info" %>
+</div>
+<% end %>
