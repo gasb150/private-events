@@ -28,8 +28,8 @@ class AttendancesController < ApplicationController
         redirect_to event_path(params[:event_id])
         end
         elsif current_user.id == Attendance.find_by(event_id: params[:event_id]).user_id
-        render event_path(params[:event_id])
-          flash.alert = "You are currently in this event"
+        redirect_to event_path(params[:event_id])
+        flash.alert = "You are currently in this event"
         
         else
         if @attendances.save

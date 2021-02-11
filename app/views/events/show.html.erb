@@ -11,9 +11,8 @@
        <%#= simple_form_for( @attendances, path: new_attendance_path ) do |f| %>
         <%#= f.input :event_id, as => :hidden %>
        <%#= f.button :submit %>
-         <%# end %>
-
-         <%= link_to 'Attend', attendances_path(event_id: @event.id), method: :post %>
+       <%# end %>
+       <%= link_to 'Attend', attendances_path(event_id: @event.id), method: :post %>
      
     
 <% if current_user.id == @event.user_id %>
