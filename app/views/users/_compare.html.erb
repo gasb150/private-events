@@ -15,7 +15,6 @@
 
 <% current_user.attended_events.each do  |attended|%>
     <% time1 = attended.date.utc%>
- 
     <% if time1 <= time2 %>
     <h3> event title: <%= attended.title%></br> </h3>
     <p> event datails: <%= attended.description%> </p>
