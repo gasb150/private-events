@@ -8,12 +8,12 @@ class EventsController < ApplicationController
 
   # GET /events/1 or /events/1.json
   def show
-    
+
   end
 
   # GET /events/new
   def new
-    @event = Event.new
+    @event = Event.new(event_params)
   end
 
   # GET /events/1/edit

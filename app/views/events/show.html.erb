@@ -2,18 +2,20 @@
 
       <p><%= @event.title %></p>
       <p><%= @event.description %></p>
-      
-
       <tr>
       <% @event.attendee.each do |attendee| %>
-      
       <td><%= attendee.name %></td>
-
-    
-
       </tr>
-    <% end %>
+      <% end %>
+     
+       <%#= simple_form_for( @attendances, path: new_attendance_path ) do |f| %>
+        <%#= f.input :event_id, as => :hidden %>
+       <%#= f.button :submit %>
+         <%# end %>
 
+         <%= link_to 'Attend', attendances_path(event_id: @event.id), method: :post %>
+     
+    
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
