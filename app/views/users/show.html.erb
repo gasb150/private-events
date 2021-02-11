@@ -1,22 +1,2 @@
 <h1><%= current_user.name %></h1>
-<h2>Upcoming event</h2>
-<%= m = DateTime.now.utc %> </br>
-<% current_user.attended_events.each do  |attended|%>
-    <% n = attended.date.utc%></br>
-    <% m = DateTime.now.utc %> </br>
-    <% if n >= m %>
-    <h3> event title: <%= attended.title%></br> </h3>
-    <p> event date: <%= attended.date.utc%></br></p> </br> 
-    <% end %>
-<% end %>
-
-<h2>Past event</h2>
-
-<% current_user.attended_events.each do  |attended|%>
-    <% n = attended.date.utc%></br>
-    <% m = DateTime.now.utc %> </br>
-    <% if n < m %>
-    <h3> event title: <%= attended.title%></br> </h3>
-    <p> event date: <%= attended.date.utc%></br></p> </br>
-    <% end %>
-<% end %></br>
+<%= render 'compare' %>

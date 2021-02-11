@@ -1,0 +1,24 @@
+<h2>Actual date: <%= m = DateTime.now.utc.strftime("%F") %></h2> </br>
+<h2>Upcoming event</h2>
+
+
+<% time2 = DateTime.now.utc %>
+<% current_user.attended_events.each do  |attended|%>
+    <% time1 = attended.date.utc%>
+    <% if time1 > time2 %>
+    <h3> event title: <%= attended.title%></br> </h3>
+    <p> event date: <%= attended.date.utc.strftime("%F")%></br></p> </br> 
+    <% end %>
+<% end %>
+
+<h2>Past event</h2>
+
+<% current_user.attended_events.each do  |attended|%>
+    <% time1 = attended.date.utc%>
+ 
+    <% if time1 <= time2 %>
+    <h3> event title: <%= attended.title%></br> </h3>
+    <p> event datails: <%= attended.description%> </p>
+    <p> event date: <%= attended.date.utc.strftime("%F")%></br></p> </br>
+    <% end %>
+<% end %></br>
