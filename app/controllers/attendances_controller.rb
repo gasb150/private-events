@@ -20,13 +20,22 @@ class AttendancesController < ApplicationController
 
   # POST /events or /events.json
   def create
+    
     @attendances = Attendance.new(user_id: current_user.id, event_id: params[:event_id])
-
-   
-      if @attendances.save
+    
+       if Attendance.find_by(event_id: params[:event_id]).nil?
+        if @attendances.save
         redirect_to event_path(params[:event_id])
-      else
+        end
+        elsif current_user.id == Attendance.find_by(event_id: params[:event_id]).user_id
+        render event_path(params[:event_id])
+          flash.alert = "You are currently in this event"
         
+        else
+        if @attendances.save
+        redirect_to event_path(params[:event_id])
+       
+      end
     end
   end
 
