@@ -15,7 +15,7 @@ class EventsController < ApplicationController
       flash.alert = 'You have to login first'
       redirect_to root_path
     else
-    @event = Event.new
+      @event = Event.new
     end
   end
 

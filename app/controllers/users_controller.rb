@@ -4,7 +4,7 @@ class UsersController < ApplicationController
       flash.alert = 'You have to login first'
       redirect_to root_path
     else
-    redirect_to user_path(id: current_user.id)
+      redirect_to user_path(id: current_user.id)
     end
   end
 
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       flash.alert = 'You have to login first'
       redirect_to root_path
     else
-    @user = User.find(params[:id])
+      @user = User.find(params[:id])
     end
   end
 

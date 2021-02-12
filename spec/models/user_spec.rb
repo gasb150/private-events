@@ -26,11 +26,11 @@ RSpec.describe User, type: :model do
     end
 
     it 'if password short present' do
-        u = User.new
-        u.password = 'pass'
-        u.valid?
-        expect(u.errors[:password]).to include("is too short (minimum is 6 characters)")
-      end
+      u = User.new
+      u.password = 'pass'
+      u.valid?
+      expect(u.errors[:password]).to include('is too short (minimum is 6 characters)')
+    end
 
     it 'if password present' do
       u = User.new
