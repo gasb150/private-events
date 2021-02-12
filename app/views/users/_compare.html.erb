@@ -4,6 +4,7 @@
   <table class="table">
   <thead>
     <tr class="text-center">
+      <th scope="col">Event Creator</th>
       <th scope="col">Event Title</th>
       <th scope="col">Date</th>
       <th scope="col">Event Details</th>
@@ -16,9 +17,10 @@
     <% time1 = attended.date.utc%>
     <% if time1 > time2 %>
    <tr class="text-center">
-      <td class="table-success text-center"><h3>  <%= attended.title%></br> </h3></td>
-      <td class="text-center"><p> event date: <%= attended.date.utc.strftime("%F")%></br></p> </br> </td>
-      <td class="text-center"><%= link_to "The Event", event_path, class: "btn btn-info" %> </td>
+      <td class="table-success text-center"><h3>  <%= attended.user.name%></br> </h3></td>
+      <td class=" text-center"><h3>  <%= attended.title%></br> </h3></td>
+      <td class="text-center"><p>  <%= attended.date.utc.strftime("%F")%></br></p> </br> </td>
+      <td class="text-center"><%= link_to "The Event", event_path(attended), class: "btn btn-info" %> </td>
     </tr>
         <% end %>
 <% end %>
@@ -30,6 +32,7 @@
 
   <thead>
     <tr class="text-center">
+      <th scope="col">Event Creator</th>
       <th scope="col">Event Title</th>
       <th scope="col">Date</th>
       <th scope="col">Event Details</th>
@@ -41,9 +44,10 @@
     <% time1 = attended.date.utc%>
     <% if time1 <= time2 %>
   <tr class="text-center">
-    <td class="text-center table-secondary "><h3> event title: <%= attended.title%></br> </h3> </td>
-    <td class="text-center"><p> event date: <%= attended.date.utc.strftime("%F")%></br></p> </br> </td>
-    <td class="text-center"><%= link_to "The Event", event_path, class: "btn btn-info" %> </td>
+    <td class="table-success text-center"><h3>  <%= attended.user.name%></br> </h3></td>
+    <td class="text-center table-secondary "><h3>  <%= attended.title%></br> </h3> </td>
+    <td class="text-center"><p> <%= attended.date.utc.strftime("%F")%></br></p> </br> </td>
+    <td class="text-center"><%= link_to "The Event", event_path(attended), class: "btn btn-info" %> </td>
   </tr>
     <% end %>
 <% end %>

@@ -9,7 +9,7 @@
  <div class="container">
   <div class="row">
     <div class="col">
-      <p>Date: <%= @event.date %></p>
+      <p>Date: <%= @event.date.utc.strftime("%F") %></p>
     </div>
      <% if user_signed_in?%>
     <div class="col-6 text-center">

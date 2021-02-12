@@ -22,7 +22,7 @@
       <th scope="row"><%= event.id %></th>
       <td class="table-success text-center"><%= event.title %></td>
       <td class="text-center"><%= link_to 'Show', event %></td>
-       <td class="text-center"><%= event.date %></td>
+       <td class="text-center"><%= event.date.utc.strftime("%F") %></td>
        <% if user_signed_in?  && current_user.id == event.user_id %>
         <td class="table-warning text-center"><%= link_to 'Edit', edit_event_path(event) %></td>
         <td class="table-warning text-center"><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
