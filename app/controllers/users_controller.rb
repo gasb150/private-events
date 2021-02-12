@@ -4,11 +4,16 @@ class UsersController < ApplicationController
   end
 
   def show
+    if current_user.nil?
+      flash.alert = 'You have to login first'
+      redirect_to root_path
+    else
     @user = User.find(params[:id])
+    end
   end
 
   def new
-    @user = User.new
+    @user = User.new(user_params)
   end
 
   def edit; end
