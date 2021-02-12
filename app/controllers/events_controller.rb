@@ -11,7 +11,12 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
+    if current_user.nil?
+      flash.alert = 'You have to login first'
+      redirect_to root_path
+    else
     @event = Event.new
+    end
   end
 
   # GET /events/1/edit

@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   def index
-    @user = User.all
+    if current_user.nil?
+      flash.alert = 'You have to login first'
+      redirect_to root_path
+    else
+    redirect_to user_path(id: current_user.id)
+    end
   end
 
   def show
