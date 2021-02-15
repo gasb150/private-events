@@ -1,2 +1,6 @@
 <h1 class="text-center text-success mt-3"><%= current_user.name %> Events </h1>
+<h2 class="text-center fs-4">Today(UTC-Time): <%= m = DateTime.now.utc.strftime("%F") %></h2> </br>
+
+
+<%= render 'created' %>
 <%= render 'compare' %>

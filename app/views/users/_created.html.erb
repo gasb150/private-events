@@ -1,0 +1,45 @@
+
+  <table class="table w-75 m-auto">
+  <h3 class="text-center text-danger"> Created Events  </h3>
+  <h3 class="text-center text-primary"> Upcoming Events  </h3>
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Event Title</th>
+      <th scope="col">Date</th>
+      <th scope="col">Event Details</th>
+    </tr>
+  </thead>
+<tbody>
+
+  <% time_now = DateTime.now.utc %>
+  <% current_user.events.each do |event|%>
+  <% if event.date > time_now %>
+   <tr class="text-center">
+      <td class=" text-center"><h3>  <%= event.title%></br> </h3></td>
+      <td class="text-center"><p>  <%= event.date.utc.strftime("%F")%></br></p> </br> </td>
+      <td class="text-center"><%= link_to "The Event", event_path(event), class: "btn btn-info" %> </td>
+    </tr>
+  <% end %>
+  <% end %>
+
+ <table class="table w-75 m-auto ">
+  <h3 class="text-center mt-5 text-secondary"> Past Events  </h3>
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Event Title</th>
+      <th scope="col">Date</th>
+      <th scope="col">Event Details</th>
+    </tr>
+  </thead>
+<tbody>
+
+  <% time_now = DateTime.now.utc %>
+  <% current_user.events.each do |event|%>
+  <% if event.date < time_now %>
+   <tr class="text-center">
+      <td class=" text-center"><h3>  <%= event.title%></br> </h3></td>
+      <td class="text-center"><p>  <%= event.date.utc.strftime("%F")%></br></p> </br> </td>
+      <td class="text-center"><%= link_to "The Event", event_path(event), class: "btn btn-info" %> </td>
+    </tr>
+  <% end %>
+  <% end %>
