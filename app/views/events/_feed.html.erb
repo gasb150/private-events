@@ -6,6 +6,8 @@
 <% else %> 
 <h1 class="text-center my-4"> Welcome To Our Event Application </h1>
 <% end %>
+
+<h1 class="mt-5 text-center text-success"> The Upcoming Events </h1>
   <table class="table">
   <thead>
     <tr class="text-center">
@@ -16,8 +18,10 @@
     </tr>
   </thead>
 <tbody>
-   
+
+   <% time_now = DateTime.now.utc %>
   <% @events.each do |event| %>
+  <% if time_now < event.date %>
    <tr class="text-center">
       <th scope="row"><%= event.id %></th>
       <td class="table-success text-center"><%= event.title %></td>
@@ -27,8 +31,38 @@
         <td class="table-warning text-center"><%= link_to 'Edit', edit_event_path(event) %></td>
         <td class="table-warning text-center"><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <% end %>
+    <% end %>
+   </tr>
+
+    <% end %>
+
+
+  <table class="table mt-5">
+  <h1 class="mt-5 text-center text-secondary"> The Past Events </h1>
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Event Number</th>
+      <th scope="col">Event Title</th>
+      <th scope="col">Event Details</th>
+      <th scope="col">Event Date</th>
+    </tr>
+  </thead>
+<tbody>
+
+   <% time_now = DateTime.now.utc %>
+  <% @events.each do |event| %>
+  <% if time_now > event.date %>
+   <tr class="text-center">
+      <th scope="row"><%= event.id %></th>
+      <td class="table-success text-center"><%= event.title %></td>
+      <td class="text-center"><%= link_to 'Show', event %></td>
+       <td class="text-center"><%= event.date.utc.strftime("%F") %></td>
+       <% if user_signed_in?  && current_user.id == event.user_id %>
+        <td class="table-warning text-center"><%= link_to 'Edit', edit_event_path(event) %></td>
+        <td class="table-warning text-center"><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    <% end %>
    </tr>
 
    
     <% end %>
-
