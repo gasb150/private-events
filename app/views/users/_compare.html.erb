@@ -1,0 +1,58 @@
+
+
+<table class="table w-75 m-auto mt-5">
+<h3 class="text-center text-danger mt-5"> Attedned Events </h3>
+<h3 class="text-center text-primary"> Upcoming Events </h3>
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Event Creator</th>
+      <th scope="col">Event Title</th>
+      <th scope="col">Date</th>
+      <th scope="col">Event Details</th>
+    </tr>
+  </thead>
+<tbody>
+
+  <% time2 = DateTime.now.utc %>
+  <% current_user.attended_events.each do  |attended|%>
+    <% time1 = attended.date.utc%>
+    <% if time1 > time2 %>
+   <tr class="text-center">
+      <td class="table-success text-center"><h3>  <%= attended.user.name%></br> </h3></td>
+      <td class=" text-center"><h3>  <%= attended.title%></br> </h3></td>
+      <td class="text-center"><p>  <%= attended.date.utc.strftime("%F")%></br></p> </br> </td>
+      <td class="text-center"><%= link_to "The Event", event_path(attended), class: "btn btn-info" %> </td>
+    </tr>
+        <% end %>
+<% end %>
+
+
+
+  <table class="table w-75 m-auto">
+  <h3 class="text-center text-secondary mt-5"> Past Events </h3>
+
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Event Creator</th>
+      <th scope="col">Event Title</th>
+      <th scope="col">Date</th>
+      <th scope="col">Event Details</th>
+    </tr>
+  </thead>
+<tbody>
+
+<% current_user.attended_events.each do  |attended|%>
+    <% time1 = attended.date.utc%>
+    <% if time1 <= time2 %>
+  <tr class="text-center">
+    <td class="table-success text-center"><h3>  <%= attended.user.name%></br> </h3></td>
+    <td class="text-center table-secondary "><h3>  <%= attended.title%></br> </h3> </td>
+    <td class="text-center"><p> <%= attended.date.utc.strftime("%F")%></br></p> </br> </td>
+    <td class="text-center"><%= link_to "The Event", event_path(attended), class: "btn btn-info" %> </td>
+  </tr>
+    <% end %>
+<% end %>
+  
+  
+
+

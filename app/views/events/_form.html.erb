@@ -1,0 +1,21 @@
+
+<%= simple_form_for(@event) do |f| %>
+  <%= f.error_notification message: 'Please ensure you added ALL the details of the event: Title, Description, Date and Location' %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+  </div>
+
+  <div class="form-actions d-flex flex-column w-50 m-auto">
+ <%= f.label :title, "Title" %>
+  <%= f.text_field :title %>
+  <%= f.label :description, "The event details" %>
+  <%= f.text_area :description %>
+  <%= f.label :location, "Location of the event" %>
+  <%= f.text_field :location %>
+   <%= f.label :date, "The date of the event" %>
+  <%= f.date_field :date %>
+  <%= f.button :submit , class: "btn btn-primary my-2" %>
+  </div>
+<% end %> 
+
