@@ -1,15 +1,15 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 # Association: Private Events!
  
-> In this project, we created an application using Ruby on Rails for creating events and enable users to attend to these events, including the model structure, associations, controllers, views, validations, and authentications, stylized with Bootstrap.
+> In this project, we created an application using Ruby on Rails for creating events and enable users to attend these events, including the model structure, associations, controllers, views, validations, and authentications, stylized with Bootstrap.
 - Consists of T models: User, Post
-- Only 'Sing Up' members are allowed to create and attend events.
-- Only creator user is allowed to edit and delete his event.
+- allow only 'Sing Up' members to create and attend events.
+- Allow only the creator to edit and delete his event.
 
 
 <img src="./imgs/home-page.png">
 
-- Each user can see a list of his events, and these events are classified into two parts: upcoming and past events:
+- Each user can see a list of his events, and these events classified into two parts: upcoming and past events:
 
 <img src="./imgs/events-list.png">
 
@@ -23,7 +23,7 @@
  
 ### Setup
 
-1. To run this project locally, please ensure you have Ruby and Ruby on Rails installed on your machine.
+1. To run this project, please ensure you have Ruby and Ruby on Rails installed on your machine.
 2. Open the terminal.
 3. Clone this repository by running:
 
@@ -31,7 +31,7 @@
 git clone https://github.com/gasb150/private-events
 ```
 
-4. Install gems: Enter to the folder of the project in your local machine and After that write in the terminal:
+4. Install gems: Enter to the folder of the project in your local machine and write in the terminal:
 
 ```bash
 bundle install
